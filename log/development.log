@@ -9701,3 +9701,18 @@ Rendered layouts/_nav.html.erb (2.4ms)
 Rendered layouts/_footer.html.erb (47.4ms)
 Rendered users/new.html.erb within layouts/application (93.8ms)
 Completed 200 OK in 195ms (Views: 96.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2011-04-12 14:10:54 -0600
+  Processing by UsersController#new as HTML
+  [1m[36mSQL (1.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT `users`.* FROM `users` WHERE (`users`.`id` IS NULL) LIMIT 1
+Rendered shared/_error_messages.html.erb (0.7ms)
+  [1m[36mCommunity Load (0.6ms)[0m  [1mSELECT `communities`.* FROM `communities` WHERE (`communities`.`status` = 'Active')[0m
+Rendered users/_fields.html.erb (89.9ms)
+Rendered layouts/_header.html.erb (4.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE (`users`.`id` IS NULL) LIMIT 1
+Rendered layouts/_nav.html.erb (1.3ms)
+Rendered layouts/_footer.html.erb (3.5ms)
+Rendered users/new.html.erb within layouts/application (123.7ms)
+Completed 200 OK in 295ms (Views: 129.0ms | ActiveRecord: 2.5ms)
