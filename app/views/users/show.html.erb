@@ -1,0 +1,30 @@
+<% if current_community?(@user.id) %>
+  <div style="padding-bottom: 10px">
+    <h2>Team <%= @user.community.name || @user.community.location %></h2>
+  </div>
+  
+  <div style="padding-bottom: 10px">
+    <p>This is your team, <strong><%= @user.name %></strong>.</p>
+    <% if current_user?(@user) %>
+      <p>If you want to change your contact information, you can <%= link_to "change it here", edit_user_path(current_user) %>.</p>
+    <% end %>
+    <p>You can also E-mail Your Entire Team <%= link_to "by clicking here", mass_email(@community_users) %>.</p>
+    <p>When you are done, you can <%= link_to "sign out here", signout_path %>.</p>
+  </div>
+  
+  <table class="cuser-table">
+    <tr>
+      <th>Name</th><th>E-mail</th><th>Phone Number</th>
+    </tr>
+  <% for cuser in @community_users %>
+    <tr class="<%= captain?(cuser) %> <%= cycle('tlight', 'tdark') %>">
+      <td><%= captain?(cuser,'label') %></td><td><%= cuser.email %></td><td><%= cuser.phone %></td>
+    </tr>
+  <% end %>
+  </table>
+
+<% else %>
+
+  Sorry, you aren't allowed to see another team's information.
+
+<% end %>

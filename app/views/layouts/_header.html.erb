@@ -1,0 +1,42 @@
+<head> 
+<title><%=@page_title%></title> 
+
+
+<!-- BEGIN COMMON HEAD INCLUDES (js, css, favicon) --> 
+
+<!-- Flash Text Replacement --> 
+<link href="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/css/sifr.css" rel="stylesheet" type="text/css" media="screen" /> 
+<!-- END Flash Text Replacement --> 
+
+<!-- Cascading Style Sheets (css) --> 
+<%= stylesheet_link_tag :all %>
+<link href="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/css/reset.css" rel="stylesheet" type="text/css" media="all" /> <!-- removes default styles --> 
+<link href="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/css/screen.css" rel="stylesheet" type="text/css" media="screen" /> <!-- screen styles --> 
+<link href="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/css/print.css" rel="stylesheet" type="text/css" media="print" /> <!-- print styles --> 
+<link href="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/css/mobile.css" rel="stylesheet" type="text/css" media="handheld" /> <!-- mobile styles --> 
+<link rel="stylesheet" href="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/css/uniform.default.css" type="text/css" media="screen" charset="utf-8" /> 
+<!-- END Cascading Style Sheets (css) --> 
+
+<!-- IE6 Support --> 
+
+	<!-- .png support --> 
+		<script type="text/javascript" src="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/js/iepngfix_tilebg.js"></script> 
+		<!-- Dependant Files: /images/blank.gif, /css/iepngfix.htc, /css/ie6.css --> 
+	<!-- END .png support --> 
+	
+	<!-- Cascading Style Sheet (css - IE specific) --> 
+		<!--[if IE 6]>
+			<link href="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/css/ie6.css" rel="stylesheet" type="text/css" media="screen" />
+		<![endif]--> 
+	<!-- END Cascading Style Sheet (css - IE6 specific) --> 
+	
+<!-- END IE6 Support --> 
+
+<!-- Favorite Icon --> 
+<link rel="shortcut icon" href="http://ecc.edmontonnextgen.ca/wp-content/themes/communitychallenge/images/favicon.ico" /> 
+<!-- END Favorite Icon --> 
+
+<%= csrf_meta_tag %>
+
+<!-- END COMMON HEAD INCLUDES --> 
+</head> 

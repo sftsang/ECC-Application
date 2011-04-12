@@ -1,0 +1,12 @@
+<h1>Sign Up With Your Community</h1>
+
+<p>Registration for the Edmonton Community Challenge is free! For an opportunity to win great prizes and to make a positive contribution in your community, be sure to register by the May 15th deadline for community league registration and June 1st for individual registration. To get started, just fill out the following information and your team captain will contact you soon!</p> 
+<p>If you don&#8217;t see your community league listed in the drop down menu, please contact Michael Janz at <a href="mailto:michael.janz@efcl.org">michael.janz@efcl.org</a> to find out how to get your league registered!</p> 
+<p><em>Personal information on this Community Challenge Edmonton Registration Form is being collected under authority of Section 33(c) of the Freedom of Information and Protection Privacy (FOIP) Act and will be used by the City of Edmonton, Community Services Department for the purpose of registration, to determine teams, promotional and administrative purposes, and for program evaluation. Your name and contact information will protected in accordance with the privacy provisions of the FOIP Act.  If you have any questions about the collection or use of your personal information, contact the Next Gen Coordinator Christine Causing @ 780-496-4889.</em></p> 
+
+<%= form_for(@user) do |f| %>
+  <%= render 'fields', :f => f %>
+  <div class="actions">
+    <span class="buttonGreen"><%= f.submit "Sign up" %></span>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<!-- NAVIGATION --> 
+<div id="header-wrap" class="centering-wrap"> 
+  <a href="/" style="position:absolute; top:0; left:0; display:block; width:420px; height:80px;"></a> 
+	<a href="http://ecc-app.edmontonnextgen.ca/signup" class="buttonGreen" style="position:absolute; right:10px; top:37px;">Register NOW!</a> 
+	<ul id="main-menu" style="position:absolute; top:90px; right:10px;"> 
+		<li class="page_item page-item-3"><a href="http://ecc.edmontonnextgen.ca" title="Home">Home</a></li> 
+		<li class="page_item page-item-6"><a href="http://ecc.edmontonnextgen.ca/the-challenge/" title="The Challenge">The Challenge</a></li>
+<% if signed_in? %> 
+		<li class="page_item page-item-8 current_page_item"><a href="http://ecc-app.edmontonnextgen.ca/" title="Register">Your Team</a></li> 
+<% else %>
+    <li class="page_item page-item-8 current_page_item"><a href="http://ecc-app.edmontonnextgen.ca/signup" title="Register">Register</a></li> 
+<% end %>
+		<li class="page_item page-item-11"><a href="http://ecc.edmontonnextgen.ca/communities-rankings/" title="Communities &amp; Rankings">Communities &amp; Rankings</a></li> 
+		<li class="page_item page-item-14"><a href="http://ecc.edmontonnextgen.ca/calendar/" title="Calendar">Calendar</a></li> 
+		<li class="page_item page-item-16"><a href="http://ecc.edmontonnextgen.ca/news/" title="News">News</a></li> 
+		<li class="page_item page-item-18"><a href="http://ecc.edmontonnextgen.ca/faqs/" title="FAQs">FAQs</a></li> 
+		<li class="page_item page-item-20"><a href="http://ecc.edmontonnextgen.ca/sponsors/" title="Sponsors">Sponsors</a></li> 
+		<li class="page_item page-item-22"><a href="http://ecc.edmontonnextgen.ca/partners/" title="Partners">Partners</a></li>
+	</ul> 
+</div> 
+<!-- END NAVIGATION -->		
