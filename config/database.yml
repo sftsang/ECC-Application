@@ -19,8 +19,8 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: e19_wordpress
+  database: ecc_production
   username: root
-  password: 
+  password: V[-A#Mlp
   host: localhost
   socket: /tmp/mysql.sock
