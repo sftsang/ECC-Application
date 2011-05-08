@@ -33,7 +33,6 @@ class User < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false }
   validates :phone, :presence => true,
                     :length   => { :maximum => 14 }
-  validates :postal_code
   validates :password, :presence     => true,
                        :confirmation => true,
                        :length       => { :within => 6..40 }
