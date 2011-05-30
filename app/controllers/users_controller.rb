@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :signed_in,    :only => [:new, :create]
   before_filter :admin_user,   :only => :destroy
+  before_filter :verify_admin, :only => :full_listing
   before_filter :valid_communities
   
   def index
@@ -13,6 +14,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id] || current_user.id)
     @page_title = @user.name
     @community_users = User.where(:community_id => @user.community.id).order(:role_id, :name)
+  end
+  
+  def full_listing
+    @list_community = User.where(:community_id => params[:id]) if params[:id]
+    @registered_users = User.all
+    @communities = Community.where(:status => 'Active')
   end
 
   def new
@@ -75,6 +82,10 @@ class UsersController < ApplicationController
       else
         redirect_to(root_path)
       end
+    end
+    
+    def verify_admin
+      redirect_to(root_path) if current_user.role_id != 1
     end
     
     def signed_in

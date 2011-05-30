@@ -12,7 +12,11 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
-      redirect_back_or user
+      if user.role_id == 1
+        redirect_to full_listing_path 
+      else
+        redirect_back_or user
+      end
     end
   end
 

@@ -45,6 +45,12 @@ module SessionsHelper
     community == User.find(current_user).community_id
   end
   
+  def is_admin?(user)
+    user = User.find(user)
+    role = user.role_id
+    return true if role == 1
+  end
+  
   private
 
     def user_from_remember_token

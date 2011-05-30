@@ -1,15 +1,22 @@
-<% if current_community?(@user.id) %>
+<% if current_community?(@user.id) || is_admin?(current_user.id) %>
   <div style="padding-bottom: 10px">
     <h2>Team <%= @user.community.name || @user.community.location %></h2>
   </div>
   
   <div style="padding-bottom: 10px">
-    <p>This is your team, <strong><%= @user.name %></strong>.</p>
-    <% if current_user?(@user) %>
-      <p>If you want to change your contact information, you can <%= link_to "change it here", edit_user_path(current_user) %>.</p>
-    <% end %>
-    <p>You can also E-mail Your Entire Team <%= link_to "by clicking here", mass_email(@community_users) %>.</p>
-    <p>When you are done, you can <%= link_to "sign out here", signout_path %>.</p>
+  <% if is_admin?(current_user.id) %>
+      <p>You can go back a to a list of all teams <%= link_to "here", full_listing_path %></p>
+      <p>You can e-mail this entire team <%= link_to "by clicking here", mass_email(@community_users) %>.</p>
+      <p>If you are done, you can <%= link_to "sign out here", signout_path %>.</p>
+  <% else %>
+      <p>This is your team, <strong><%= @user.name %></strong>.</p>
+      <% if current_user?(@user) %>
+        <p>If you want to change your contact information, you can <%= link_to "change it here", edit_user_path(current_user) %>.</p>
+      <% end %>
+      <p>You can also E-mail Your Entire Team <%= link_to "by clicking here", mass_email(@community_users) %>.</p>
+      <p>When you are done, you can <%= link_to "sign out here", signout_path %>.</p>
+  <% end %>
+    
   </div>
   
   <table class="cuser-table">
@@ -24,7 +31,6 @@
   </table>
 
 <% else %>
-
-  Sorry, you aren't allowed to see another team's information.
-
+    Sorry, you aren't allowed to see another team's information.
+  
 <% end %>

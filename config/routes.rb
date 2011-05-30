@@ -6,6 +6,8 @@ EccApp::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/full_listing/:id', :to => 'users#full_listing'
+  match '/full_listing', :to => 'users#full_listing'
   
   root :to => 'users#show'
 
