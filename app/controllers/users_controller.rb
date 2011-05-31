@@ -12,14 +12,22 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id] || current_user.id)
-    @page_title = @user.name
-    @community_users = User.where(:community_id => @user.community.id).order(:role_id, :name)
+    if @user.community_id == 0
+      redirect_to full_listing_path 
+    else
+      @page_title = @user.name
+      @community_users = User.where(:community_id => @user.community.id).order(:role_id, :name)
+    end
   end
   
   def full_listing
     @list_community = User.where(:community_id => params[:id]) if params[:id]
-    @registered_users = User.all
-    @communities = Community.where(:status => 'Active')
+    @communities = Community.find_all_by_status('Active', :include => :users)
+    
+    @registered_users = 0
+    for community in @communities
+      @registered_users += community.users.count
+    end
   end
 
   def new
