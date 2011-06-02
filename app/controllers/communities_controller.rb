@@ -25,8 +25,45 @@ class CommunitiesController < ApplicationController
     end
   end
   
+  def upload
+    @user = User.find(current_user.id)
+    community_id = @user.community_id
+    @community = Community.find(community_id)
+    @scavenger = Scavenger.all(:order => "order_num")
+  end
+  
+  def new
+    raise "new"
+  end
+  
+  def edit
+    raise "edit"
+  end
+  
   def create
-    @communities = Community.create( params[:community] )
+    raise "create"
+    
+  end
+  
+  def update
+    se = params[:community][:scavenger_entry]
+    @entry = ScavengerEntry.where("community_id = '#{se[:community_id]}' AND scavenger_id = '#{se[:scavenger_id]}'").first
+    
+    # if there is aready a photo for that category replace it, otherwise create a new one
+    if @entry
+      is_saved = @entry.update_attributes(se)
+    else
+      @entry = ScavengerEntry.new(se)
+      is_saved = @entry.save
+    end
+    
+    if is_saved
+      flash[:success] = "Image Uploaded."
+      redirect_to '/communities/upload'
+    else
+      render 'upload'
+    end
+    
   end
     
   def full_listing

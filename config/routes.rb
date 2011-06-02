@@ -1,5 +1,6 @@
 EccApp::Application.routes.draw do
-  match '/communities/:id',  :to => 'communities#index'
+  match '/communities/upload',  :to => 'communities#upload'
+  #match '/communities/:id',  :to => 'communities#index'
   
   resources :sessions, :only => [ :new, :create, :destroy ]
   resources :users

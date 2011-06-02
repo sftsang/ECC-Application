@@ -447,6 +447,13 @@ textarea{
 	textarea:focus{
 		border:1px solid #50b948;	
 		}
+		
+.success{
+  border:1px solid #000;
+  margin: 5px;
+  padding: 5px;
+  background: #88F298;
+}
 
 /* END FORM ELEMENTS */
 /* END FORM ELEMENTS */
@@ -536,6 +543,22 @@ textarea{
   color: green;
   font-weight: bold;
 }
+
+.scavenger-table{
+  width: 600px;
+  }
+  .scavenger-table tr th {
+    border: 1px solid black;
+    padding: 4px;
+    background-color: #eee;
+  }
+  .scavenger-table tr td {
+    border: 1px solid black;
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
 /* END COMMUNITY ELEMENTS */
 /* END COMMUNITY ELEMENTS */
 /* END COMMUNITY ELEMENTS */

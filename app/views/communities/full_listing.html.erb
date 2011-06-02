@@ -1,0 +1,32 @@
+<% if is_admin?(current_user.id) %>
+  <div style="padding-bottom: 10px">
+    <p>You can go back a to a list of all teams <%= link_to "here", full_listing_path %></p>
+    <p>Total Registered Communities: <strong><%= @communities.count %></strong></p>
+    <p>Total Registered Users: <strong><%= @registered_users %></strong></p>
+    <p>If you are done, you can <%= link_to "sign out here", signout_path %>.</p>
+  </div>
+  
+  <% if !@list_community.blank? %>
+    <table class="cuser-table">
+      <tr>
+        <th>Name</th><th>E-mail</th><th>Phone Number</th>
+      </tr>
+    <% for cuser in @list_community %>
+      <tr class="<%= captain?(cuser) %> <%= cycle('tlight', 'tdark') %>">
+        <td><%= captain?(cuser,'label') %></td><td><%= cuser.email %></td><td><%= cuser.phone %></td>
+      </tr>
+    <% end %>
+    </table>
+  <% else  %>
+    <table class="cuser-table">
+      <tr>
+        <th>Community</th>
+      </tr>
+    <% for community in @communities %>
+      <tr class=" <%= cycle('tlight', 'tdark') %>">
+        <td><%= link_to community.location, full_listing_path + "/" + community.id.to_s %></td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
+<% end %>

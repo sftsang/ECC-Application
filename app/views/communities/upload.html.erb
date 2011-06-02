@@ -1,0 +1,24 @@
+  <div>
+    <%= form_for @community, :html => {:multipart => true} do |form| %>
+      <%= form.fields_for :scavenger_entry do |se| %>
+        <%= se.hidden_field :community_id, :value => @community.id %>
+        <%= se.select(:scavenger_id, options_from_collection_for_select(@scavenger, "id", "title"), {:include_blank => false}, {:style => 'width: 500px;'}) %>
+        <%= se.file_field :simage %>
+      <% end %>
+      <br style="clear:both;">
+      <span class="buttonGreen"><%= form.submit "Submit" %></span>
+    <% end %>
+  </div>
+  <br style="clear:both;">
+  <div>
+    <table class="scavenger-table">
+      <tr><th>Title</th><th>Submission</th></tr>
+    <% for item in @scavenger %>
+      <% s = ScavengerEntry.where("community_id = '#{@community.id}' AND scavenger_id = '#{item.id}'").first #very bad... but not sure if there is another way %>
+      <tr class="<%= cycle('tlight', 'tdark') %>">
+        <td><%= item.title %></td>
+        <td><%= link_to( image_tag(s.simage.url(:thumb)), s.simage.url(:large), {:rel => 'entry1', :title => item.title } ) if s %></td>
+      <tr>
+    <% end %>
+    </table>
+  </div>
