@@ -39,10 +39,8 @@ module SessionsHelper
     user == current_user
   end
   
-  def current_community?(user)
-    user = User.find(user)
-    community = user.community_id
-    community == User.find(current_user).community_id
+  def current_community?(community)
+    community.id == User.find(current_user).community_id
   end
   
   def is_admin?(user)

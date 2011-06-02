@@ -19,16 +19,6 @@ class UsersController < ApplicationController
       @community_users = User.where(:community_id => @user.community.id).order(:role_id, :name)
     end
   end
-  
-  def full_listing
-    @list_community = User.where(:community_id => params[:id]) if params[:id]
-    @communities = Community.find_all_by_status('Active', :include => :users)
-    
-    @registered_users = 0
-    for community in @communities
-      @registered_users += community.users.count
-    end
-  end
 
   def new
     @user = User.new
@@ -40,7 +30,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the ECC App!"
-      redirect_to @user
+      redirect_to community_path(@user.community_id)
     else
       @page_title = "Sign up"
       @user.password = ""
@@ -58,7 +48,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated."
-      redirect_to @user
+      redirect_to community_path(@user.community_id)
     else
       @page_title = "Edit user"
       render 'edit'

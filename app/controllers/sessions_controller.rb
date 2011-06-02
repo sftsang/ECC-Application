@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       if user.role_id == 1
         redirect_to full_listing_path 
       else
-        redirect_back_or user
+        redirect_back_or communities_path
       end
     end
   end

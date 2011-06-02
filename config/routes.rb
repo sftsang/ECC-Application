@@ -1,15 +1,19 @@
 EccApp::Application.routes.draw do
+  match '/communities/:id',  :to => 'communities#index'
+  
   resources :sessions, :only => [ :new, :create, :destroy ]
   resources :users
   resources :pages
+  resources :communities
+  resources :community_scavenger
 
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-  match '/full_listing/:id', :to => 'users#full_listing'
-  match '/full_listing', :to => 'users#full_listing'
+  match '/full_listing/:id', :to => 'communities#full_listing'
+  match '/full_listing', :to => 'communities#full_listing'
   
-  root :to => 'users#show'
+  root :to => 'communities#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

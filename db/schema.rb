@@ -10,13 +10,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411142035) do
+ActiveRecord::Schema.define(:version => 20110602071938) do
 
   create_table "communities", :force => true do |t|
     t.string   "location"
     t.string   "name"
     t.text     "description"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "community_scavengers", :force => true do |t|
+    t.integer  "community_id"
+    t.integer  "scavenger_id"
+    t.string   "simage_file_name"
+    t.string   "simage_content_type"
+    t.integer  "simage_file_size"
+    t.datetime "simage_update_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scavengers", :force => true do |t|
+    t.string   "title"
+    t.integer  "order_num"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,7 +53,5 @@ ActiveRecord::Schema.define(:version => 20110411142035) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["email"], :name => "index_ecc_users_on_email", :unique => true
 
 end

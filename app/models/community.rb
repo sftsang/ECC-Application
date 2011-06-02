@@ -14,8 +14,11 @@
 
 class Community < ActiveRecord::Base
   has_many :users
+  has_many :scavengers, :through => :community_scavengers
   attr_accessible :location, :status, :name, :description, :status
   
   validates :location, :presence => true
   validates :status, :presence => true
+  
+  # accepts_nested_attributes_for :community_scavenger, :allow_destroy => true
 end
