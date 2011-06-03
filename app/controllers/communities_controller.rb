@@ -29,6 +29,7 @@ class CommunitiesController < ApplicationController
     @user = User.find(current_user.id)
     community_id = @user.community_id
     @community = Community.find(community_id)
+    @team = @community.users.order(:role_id, :name)
     @scavenger = Scavenger.all(:order => "order_num")
   end
   
