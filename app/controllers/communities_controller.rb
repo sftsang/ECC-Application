@@ -17,7 +17,7 @@ class CommunitiesController < ApplicationController
   
   def show
     @list_community = User.where(:community_id => params[:id]) if params[:id]
-    @communities = Community.find_all_by_status('Active', :include => :users)
+    @communities = Community.find_all_by_status('Active', :include => :users, :order => :location)
     
     @registered_users = 0
     for community in @communities
@@ -27,7 +27,12 @@ class CommunitiesController < ApplicationController
   
   def upload
     @user = User.find(current_user.id)
-    community_id = @user.community_id
+    if @user.role_id == 1
+      community_id = params[:id]
+    else
+      community_id = @user.community_id
+    end
+    
     @community = Community.find(community_id)
     @team = @community.users.order(:role_id, :name)
     @scavenger = Scavenger.all(:order => "order_num")
@@ -60,7 +65,11 @@ class CommunitiesController < ApplicationController
     
     if is_saved
       flash[:success] = "Image Uploaded."
-      redirect_to '/communities/upload'
+      if current_user.role_id == 1
+        redirect_to "/communities/upload/#{se[:community_id]}"
+      else
+        redirect_to '/communities/upload'
+      end
     else
       render 'upload'
     end
@@ -69,7 +78,7 @@ class CommunitiesController < ApplicationController
     
   def full_listing
     @list_community = User.where(:community_id => params[:id]) if params[:id]
-    @communities = Community.find_all_by_status('Active', :include => :users)
+    @communities = Community.find_all_by_status('Active', :include => :users, :order => :location)
     
     @registered_users = 0
     for community in @communities

@@ -1,4 +1,5 @@
 EccApp::Application.routes.draw do
+  match '/communities/upload/:id',  :to => 'communities#upload'
   match '/communities/upload',  :to => 'communities#upload'
   #match '/communities/:id',  :to => 'communities#index'
   
